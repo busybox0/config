@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v3
 
 
-      - uses: ./actions/.npmrc
+      - uses: ./actions/npmrc
         with:
           token: ${{ env.GITHUB_API_URL }}
 
