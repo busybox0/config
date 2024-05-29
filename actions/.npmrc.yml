@@ -1,0 +1,24 @@
+name: 'Setup.Npmrc'
+description: 'Create and configure .npmrc file'
+
+branding:
+  icon: file
+  color: black
+
+inputs:
+  registry:
+    required: true
+    default: 'https://registry.npmjs.org/'
+  token:
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        set -x
+        echo "Creating .npmrc"
+        echo "//${{inputs.registry}}/:_auth=${{inputs.token}}" > .npmrc
+        echo "always_auth=true" >> .npmrc
+        cat ./.npmrc
+      shell: bash
