@@ -1,10 +1,6 @@
 name: 'Setup.Npmrc'
 description: 'Create and configure .npmrc file'
 
-branding:
-  icon: file
-  color: black
-
 inputs:
   registry:
     required: true
