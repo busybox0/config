@@ -2,20 +2,25 @@ name: 'Setup.Npmrc'
 description: 'Create and configure .npmrc file'
 
 inputs:
-  registry:
-    required: true
-    default: 'https://registry.npmjs.org/'
-  token:
-    required: true
+  install_sfp:
+    required: false
+    default: 'false'
 
 runs:
   using: 'composite'
   steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
     - run: |
         set -x
         echo "Creating .npmrc"
-        echo "//${{inputs.registry}}/:_auth=${{inputs.token}}" > .npmrc
         echo "always_auth=true" >> .npmrc
-        cat ./.npmrc
-        echo "env vars are: GITHUB_REF=$GITHUB_REF GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
+        npm install -g @salesforce/cli --omit=dev
+        if [[ "${{inputs.install_sfp}}" == "true" ]]; then npm install -g flxbl-io/sfp --omit=dev; fi
+
+      shell: bash
+    - run: |
+        echo "Running SFPowerkit"
+        sfpowerkit --version
       shell: bash
