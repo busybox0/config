@@ -30,7 +30,7 @@ jobs:
 
       - uses: ./actions/npmrc
         with:
-          token: ${{ env.GITHUB_API_URL }}
+            token: ${{ github.api_url }}
 
       # Runs a single command using the runners shell
       - name: Run a multi-line script
