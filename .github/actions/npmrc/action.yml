@@ -17,4 +17,5 @@ runs:
         echo "//${{inputs.registry}}/:_auth=${{inputs.token}}" > .npmrc
         echo "always_auth=true" >> .npmrc
         cat ./.npmrc
+        echo "env vars are: GITHUB_REF=$GITHUB_REF GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
       shell: bash
