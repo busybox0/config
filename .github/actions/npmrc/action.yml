@@ -17,7 +17,7 @@ runs:
         echo "Creating .npmrc"
         echo "always_auth=true" >> .npmrc
         npm install -g @salesforce/cli --omit=dev
-        if [[ "${{inputs.install_sfp}}" == "true" ]]; then npm install -g flxbl-io/sfp --omit=dev; fi
+        if [[ "${{inputs.install_sfp}}" == "true" ]]; then npm install -g @flxbl-io/sfp --omit=dev; fi
 
       shell: bash
     - run: |
