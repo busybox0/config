@@ -24,3 +24,4 @@ runs:
         echo "Running SFPowerkit"
         sfp --version
       shell: bash
+
