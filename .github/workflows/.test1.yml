@@ -34,4 +34,4 @@ jobs:
       - name: Run a script after setting up Node.js
         run: |
           env
-          echo "Done"
+          echo "Done" > result.txt
